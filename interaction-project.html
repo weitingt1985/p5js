@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+
+    <script>
+        var centerX = 0
+        var centerY = 600
+
+
+        function setup() {
+            createCanvas(800, 600);
+            background(123, 165, 248); /// winter blue
+            frameRate(30);
+        
+        }
+
+        function draw() {
+             
+        }
+
+        function keyPressed() {
+            stroke(255);
+            strokeWeight(20);
+
+            //snow
+            point(centerX, centerY);
+            point(centerX + 50, centerY);
+            point(centerX + 100, centerY);
+            point(centerX + 150, centerY);
+            point(centerX + 200, centerY);
+            point(centerX + 250, centerY);
+            point(centerX + 300, centerY);
+            point(centerX + 350, centerY);
+            point(centerX + 400, centerY);
+            point(centerX + 450, centerY);
+            point(centerX + 500, centerY);
+            point(centerX + 550, centerY);
+            point(centerX + 600, centerY);
+            point(centerX + 650, centerY);
+            point(centerX + 700, centerY);
+            point(centerX + 750, centerY);
+            point(centerX + 800, centerY);
+            centerY -= random(-10, 10); //move the snow down or up
+            centerX += random(-20, 20); //move the snow right or left
+        }
+
+        function mouseClicked() {
+            strokeWeight(2);
+            stroke(255);
+
+            //outer layer of the snowflake
+            line(mouseX, mouseY, mouseX + 20, mouseY); //center to right 
+            line(mouseX, mouseY, mouseX - 20, mouseY); //center to left
+            line(mouseX, mouseY, mouseX, mouseY - 20); //center to top
+            line(mouseX, mouseY, mouseX, mouseY + 20); //center to bottom 
+            line(mouseX, mouseY, mouseX + 15, mouseY - 15); //center to top right
+            line(mouseX, mouseY, mouseX + 15, mouseY + 15); //center to bottom right 
+            line(mouseX, mouseY, mouseX - 15, mouseY - 15); //center to top left
+            line(mouseX, mouseY, mouseX - 15, mouseY + 15); // center to bottom left 
+
+            //petal of the snowflake
+
+            //top right 
+            line(mouseX + 5, mouseY - 5, mouseX + 10, mouseY - 5); // inner right
+            line(mouseX + 5, mouseY - 5, mouseX + 5, mouseY - 10); // inner left
+            line(mouseX + 10, mouseY - 10, mouseX + 15, mouseY - 10); // outer right
+            line(mouseX + 10, mouseY - 10, mouseX + 10, mouseY - 15); // outer left
+
+            //top center
+            line(mouseX, mouseY - 8, mouseX + 5, mouseY - 13); //inner right
+            line(mouseX, mouseY - 8, mouseX - 5, mouseY - 13); //inner left
+            line(mouseX, mouseY - 14, mouseX + 5, mouseY - 19); //outer right
+            line(mouseX, mouseY - 14, mouseX - 5, mouseY - 19); //outer left
+
+            //top left
+            line(mouseX - 5, mouseY - 5, mouseX - 5, mouseY - 10); //inner right 
+            line(mouseX - 5, mouseY - 5, mouseX - 10, mouseY - 5); //inner left
+            line(mouseX - 10, mouseY - 10, mouseX - 10, mouseY - 15); //outer right
+            line(mouseX - 10, mouseY - 10, mouseX - 15, mouseY - 10); //outter left
+
+            //bottom right
+            line(mouseX + 5, mouseY + 5, mouseX + 10, mouseY + 5); //inner right
+            line(mouseX + 5, mouseY + 5, mouseX + 5, mouseY + 10); //inner left
+            line(mouseX + 10, mouseY + 10, mouseX + 15, mouseY + 10); //outer right 
+            line(mouseX + 10, mouseY + 10, mouseX + 10, mouseY + 15); //outer left
+
+            //center bottom
+            line(mouseX, mouseY + 8, mouseX - 5, mouseY + 13); //inner right
+            line(mouseX, mouseY + 8, mouseX + 5, mouseY + 13); //inner left
+            line(mouseX, mouseY + 14, mouseX + 5, mouseY + 19); //outer right
+            line(mouseX, mouseY + 14, mouseX - 5, mouseY + 19); //outer left
+
+            //bottom left
+            line(mouseX - 5, mouseY + 5, mouseX - 5, mouseY + 10); //inner right
+            line(mouseX - 5, mouseY + 5, mouseX - 10, mouseY + 5); //inner left
+            line(mouseX - 10, mouseY + 10, mouseX - 10, mouseY + 15) //inner right
+            line(mouseX - 10, mouseY + 10, mouseX - 15, mouseY + 10); //iner left
+
+            //right center 
+            line(mouseX + 8, mouseY, mouseX + 13, mouseY - 5); // inner top
+            line(mouseX + 8, mouseY, mouseX + 13, mouseY + 5); //inner bottom
+            line(mouseX + 14, mouseY, mouseX + 19, mouseY - 5); //outer top
+            line(mouseX + 14, mouseY, mouseX + 19, mouseY + 5); //outer bottom
+
+            //left center
+            line(mouseX - 8, mouseY, mouseX - 13, mouseY - 5); //inner top
+            line(mouseX - 8, mouseY, mouseX - 13, mouseY + 5); //inner bottom
+            line(mouseX - 14, mouseY, mouseX - 19, mouseY - 5); //outer top
+            line(mouseX - 14, mouseY, mouseX - 19, mouseY + 5); //outer bottom
+        }
+        
+        //point
+        function mouseDragged() {
+            stroke(mouseX, mouseY,150);
+            strokeWeight(5);
+            point(mouseX, mouseY);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/weitingt1985/p5js/blob/master/interaction-project.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+
+</html>
