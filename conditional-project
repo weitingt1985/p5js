@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>p5js Template</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.3/p5.js"></script>
+
+    <script>
+        var r
+        var g
+        var b
+
+        function setup() {
+            createCanvas(600, 600);
+            r = random(255)
+            g = random(255)
+            b = random(255)
+
+            noStroke();
+            // red rectangle
+            fill(255, 0, 0);
+            rect(100, 550, 75, 50);
+
+            //green rectangle 
+            fill(0, 255, 0);
+            rect(200, 550, 75, 50);
+
+            //blue rectangle 
+            fill(0, 0, 255);
+            rect(300, 550, 75, 50);
+
+            //random color rectangle
+            fill(r, g, b);
+            rect(400, 550, 75, 50);
+
+            //blank 
+            stroke(0);
+            noFill();
+            rect(500, 550, 75, 50);
+        }
+
+        function draw() {
+
+        }
+
+        function mouseDragged() {
+            noStroke();
+            ellipse(mouseX, mouseY, 15, 15);
+        }
+
+        function mouseClicked() {
+
+            if (mouseX > 100 && mouseX < 175 && mouseY > 550 && mouseY < 600) {
+                fill(255, 0, 0);
+            }
+            else if (mouseX > 200 && mouseX < 275 && mouseY > 550 && mouseY < 600) {
+                fill(0, 255, 0);
+            }
+            else if (mouseX > 300 && mouseX < 375 && mouseY > 550 && mouseY < 600) {
+                fill(0, 0, 255);
+            }
+            else if (mouseX > 400 && mouseX < 475 && mouseY > 550 && mouseY < 600) {
+                fill(r, g, b);
+            }
+            
+            //clear background and redraw the retangles  
+            else if (mouseX > 500 && mouseX < 575 && mouseY > 550 && mouseY < 600) {
+
+                background(random(255), random(255), random(255));
+                noStroke();
+                // red rectangle
+                fill(255, 0, 0);
+                rect(100, 550, 75, 50);
+
+                //green rectangle 
+                fill(0, 255, 0);
+                rect(200, 550, 75, 50);
+
+                //blue rectangle 
+                fill(0, 0, 255);
+                rect(300, 550, 75, 50);
+
+                //random color rectangle
+                fill(r, g, b);
+                rect(400, 550, 75, 50);
+
+                //blank 
+                stroke(0);
+                noFill();
+                rect(500, 550, 75, 50);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/weitingt1985/p5js/blob/master/conditional-project.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+</html>
