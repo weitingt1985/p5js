@@ -56,7 +56,6 @@
             //paddle 
             if (ballY > height - paddleHeight) { // ball is pass the goal line vertically
                 if (ballX > mouseX && ballX < mouseX + 200) { //ball is within the paddle 
-                    ballSpeedY = +.5//increase the ball speed by .5
                     ballSpeedY = ballSpeedY * -1; //switch y direction 
                     score = score + 1//increase score by 1
                     paddleLength = paddleLength - 5//dencrease the paddlelength by 5
