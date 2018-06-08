@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <title>Pong</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.4.13/p5.js"></script>
+    <script>
+        var ballX;
+        var ballY;
+        var ballSpeedX = 0;
+        var ballSpeedY = 0;
+        var paddleHeight = 30;
+        var paddleLength = 300;
+        var live = 3;
+        var score = 0;
+
+        function setup() {
+            createCanvas(800, 600);
+            noCursor(); //hide the mouse when it is inside the canvas 
+            ballX = random(width); // start the ball in  
+            ballY = random(height / 2); // the to half of the canvas   
+        }
+
+        function draw() {
+            background(0); // reset the background
+            moveBall(); //call function to move the ball
+            checkCollide(); //check if the collide with the paddle 
+            drawPaddle(); // draw the paddle multiple time 
+            drawBall(); // draw the ball multiple time
+
+            //Text at the top right corner
+            textSize(25);
+            fill(255);
+            text("Score: " + score, 400, 50);
+            text("Live: " + live, 600, 50);
+        }
+
+        function moveBall() {
+            ballX = ballX + ballSpeedX; // move the ball at certain speed along the x axis 
+            ballY = ballY + ballSpeedY; //move the ball at certain speed along the y axis 
+
+
+            console.log("ballSpeedX: " + ballSpeedX +
+                ", ballSpeedY: " + ballSpeedY);
+        }
+
+        function checkCollide() {
+            //left and right edge 
+            if (ballX < 0 || ballX > width) { // switch x-direction 
+                ballSpeedX = ballSpeedX * -1;
+            }
+            //top edge 
+            if (ballY < 0) {
+                ballSpeedY = ballSpeedY * -1; //switch y direction 
+            }
+            //paddle 
+            if (ballY > height - paddleHeight) { // ball is pass the goal line vertically
+                if (ballX > mouseX && ballX < mouseX + 200) { //ball is within the paddle 
+                    ballSpeedY = +.5//increase the ball speed by .5
+                    ballSpeedY = ballSpeedY * -1; //switch y direction 
+                    score = score + 1//increase score by 1
+                    paddleLength = paddleLength - 5//dencrease the paddlelength by 5
+                    paddleLength = constrain(paddleLength, 75, 300);//contrain the paddle between 200 and 75
+
+                }
+                else { //if the ball don't touch the paddle
+                    ballX = random(0, 800);// reinitialize ballX 
+                    ballY = random(0, 500);//reinitialize ballY
+                    ellipse(ballX, ballY, 20, 20);//redraw a wllipse at random location 
+                    live = live - 1//live minus 1 
+                }
+
+
+            }
+
+            if (live < 1) {
+                fill(255, 0, 0);
+                textSize(50);
+                text("GAME OVER!", width / 2, height / 2);
+                noLoop(); // stop the loop 
+            }
+        }
+
+        function drawBall() {
+            noStroke(); // no outline
+            fill(255)
+            ellipse(ballX, ballY, 20, 20); // draw ellipse at current x and y value 
+        }
+
+        function drawPaddle() {
+            fill(255);
+             // rectangle y-value is always at the bottom, but shifted up the height of paddle and the border of paddle
+            rect(mouseX, height - paddleHeight - 4, paddleLength, paddleHeight);
+        }
+
+        function mousePressed() {
+            ballSpeedX = 5;// the speed to begin with 
+            ballSpeedY = 5;
+        }
+     
+    </script>
+</head>
+
+<body>
+<form><input TYPE="button" onClick="history.go(0)" value="Reset"></form>
+    <div id="code" class="container-fluid">
+        <script src="https://gist-it.appspot.com/github/weitingt1985/p5js/blob/master/pong-remix.html?footer=0"></script>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script>
+        $(window).bind("load", function() {
+            $('#code').before($('#defaultCanvas0').remove());
+        });
+    </script>
+</body>
+
+
+</html>
